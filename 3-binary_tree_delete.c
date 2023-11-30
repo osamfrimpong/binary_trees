@@ -13,11 +13,11 @@ void binary_tree_delete(binary_tree_t *tree)
 	}
 	else
 	{
-		if (!tree)
+		if (tree)
 		{
-			free(tree);
+			binary_tree_delete(tree->left);
+			binary_tree_delete(tree->right);
 		}
-		binary_tree_delete(tree->left);
-		binary_tree_delete(tree->right);
+		free(tree);
 	}
 }
